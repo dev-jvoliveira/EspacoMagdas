@@ -1,196 +1,667 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Zenith Estética</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="shortcut icon" href="images/magdaremovida.ico" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Dreams - Doces & Donuts</title>
+    <style>
+        :root {
+            --rosa: #ff9bb3;
+            --roxo: #d4a5ff;
+            --amarelo: #fff2a5;
+            --verde: #b5ffc2;
+            --azul: #a5e3ff;
+        }
+        
+        body {
+            font-family: 'Comic Neue', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #fff9f9;
+            color: #5a3d2b;
+        }
+        
+        header {
+            background: linear-gradient(45deg, var(--rosa), var(--roxo));
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 3em;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: white;
+            padding: 15px;
+            gap: 20px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #ff6b9c;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: #d44dff;
+            transform: scale(1.1);
+        }
+        
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1551024506-0bccd828d307');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(214, 84, 161, 0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            background-color: var(--amarelo);
+            color: #5a3d2b;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #ffe066;
+            transform: translateY(-3px);
+        }
+        
+        .produtos {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        
+        .produtos h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #ff6b9c;
+        }
+        
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 50px;
+        }
+        
+        .produto {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .produto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .produto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .produto-info {
+            padding: 20px;
+        }
+        
+        .produto h3 {
+            margin: 0;
+            color: #d44dff;
+        }
+        
+        .produto p {
+            color: #888;
+        }
+        
+        .preco {
+            font-weight: bold;
+            color: #ff6b9c;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        
+        .add-to-cart {
+            background-color: var(--roxo);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #b57dff;
+            transform: scale(1.05);
+        }
+        
+        footer {
+            background: linear-gradient(45deg, var(--roxo), var(--rosa));
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5em;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: scale(1.3);
+        }
+        
+        /* Carrinho de Compras */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--amarelo);
+            color: #5a3d2b;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff6b9c;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+        }
+        
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            z-index: 999;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        
+        .cart-sidebar.open {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-header h2 {
+            color: #d44dff;
+            margin: 0;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: bold;
+            color: #5a3d2b;
+            margin: 0 0 5px 0;
+        }
+        
+        .cart-item-price {
+            color: #ff6b9c;
+            font-weight: bold;
+        }
+        
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b9c;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        .cart-total {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: right;
+            margin: 20px 0;
+        }
+        
+        .cart-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .checkout-btn {
+            background-color: var(--verde);
+            color: #5a3d2b;
+        }
+        
+        .clear-cart {
+            background-color: #ffcccc;
+            color: #ff3333;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: var(--verde);
+            color: #5a3d2b;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: translateX(200%);
+            transition: transform 0.3s;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 998;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .cart-sidebar {
+                width: 90%;
+                right: -90%;
+            }
+            
+            .grid-produtos {
+                padding: 0 10px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
-    <section id="nav-bar">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img src="images/massoterapia1.png" alt="Logo" class="logo"></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#top">Página inicial</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#diferenciais">Diferenciais</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Procedimentos
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Limpeza de pele</a></li>
-                      <li><a class="dropdown-item" href="#">Drenagem facial</a></li>
-                      <li><a class="dropdown-item" href="#">Peelings</a></li>
-                      <li><a class="dropdown-item" href="#">Tratamento rejuvenescedor</a></li>
-                      <li><a class="dropdown-item" href="#">Tratamento clareador</a></li>
-                      <li><a class="dropdown-item" href="#">Hidragloss</a></li>
-                      <li><a class="dropdown-item" href="#">Microagulhamento</a></li>
-                      <li><a class="dropdown-item" href="#">Massagem relaxante</a></li>
-                      <li><a class="dropdown-item" href="#">Massagem drenante</a></li>  
-                      <li><a class="dropdown-item" href="#">Massagens Indianas</a></li>             
-                      <li><a class="dropdown-item" href="#">Massagens Japonesas</a></li>                  
-                      <li><a class="dropdown-item" href="#">Detox corporal</a></li>                     
-                      <li><a class="dropdown-item" href="#">Spa dos pés (ozônio)</a></li>                      
-                      <li><a class="dropdown-item" href="#">Epilação Unissex</a></li>
-                      <li><a class="dropdown-item" href="#">Ventosas</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#footer">Contatos</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-                </form>
-              </div>
+    <div class="overlay"></div>
+    
+    <div class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>
+    
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+            <button class="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items">
+            <!-- Itens do carrinho serão adicionados aqui dinamicamente -->
+        </div>
+        <div class="cart-total">
+            Total: R$ <span class="total-amount">0.00</span>
+        </div>
+        <div class="cart-actions">
+            <button class="btn checkout-btn" id="whatsapp-checkout">
+                <i class="fab fa-whatsapp"></i> Finalizar via WhatsApp
+            </button>
+            <button class="btn clear-cart">Limpar Carrinho</button>
+        </div>
+    </div>
+    
+    <div class="notification">
+        Item adicionado ao carrinho!
+    </div>
+    
+    <header>
+        <div class="logo">DONA MAGDA GOURMET</div>
+    </header>
+    
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Nossos Donuts</a>
+        <a href="#">Doces Especiais</a>
+        <a href="#">Sobre Nós</a>
+        <a href="#">Contato</a>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Donuts que fazem sonhar</h1>
+            <p>Experimente nossos donuts artesanais feitos com amor</p>
+            <a href="#" class="btn">Peça Agora</a>
+        </div>
+    </section>
+    
+    <section class="produtos">
+        <h2>Nossas Delícias</h2>
+        <div class="grid-produtos">
+            <div class="produto">
+                <img src="https://images.unsplash.com/photo-1579761314336-f0cb6e519b8a" alt="Donut Rosa">
+                <div class="produto-info">
+                    <h3>Donut Arco-Íris</h3>
+                    <p>Cobertura colorida com sprinkles multicoloridos</p>
+                    <div class="preco">R$ 8,90</div>
+                    <button class="add-to-cart" data-id="1" data-name="Donut Arco-Íris" data-price="8.90" data-img="https://images.unsplash.com/photo-1579761314336-f0cb6e519b8a">Adicionar ao Carrinho</button>
+                </div>
             </div>
-          </nav>
-  </section>
-
-    <section id="banner">
-        <div class="container">
-        <div class="row">
-        <div class="col-md-6"> 
-        <p class="promo-title">Zenith</p>
-        <p>Cada detalhe pensado para você.</p>
-        <a href="#"><img src="images/play.png" class="play-btn" alt="#">What</a>
-        </div> 
-        <div class="col-md-6">
-            <img src="images/massoterapia.png" class="img-fluid">
+            
+            <div class="produto">
+                <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307" alt="Donut Chocolate">
+                <div class="produto-info">
+                    <h3>Donut Chocolate Belga</h3>
+                    <p>Chocolate belga derretido com raspas de chocolate</p>
+                    <div class="preco">R$ 9,50</div>
+                    <button class="add-to-cart" data-id="2" data-name="Donut Chocolate Belga" data-price="9.50" data-img="https://images.unsplash.com/photo-1551024506-0bccd828d307">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            
+            <div class="produto">
+                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad" alt="Donut Morango">
+                <div class="produto-info">
+                    <h3>Donut Morango</h3>
+                    <p>Cobertura de morango fresco com pedaços de fruta</p>
+                    <div class="preco">R$ 8,90</div>
+                    <button class="add-to-cart" data-id="3" data-name="Donut Morango" data-price="8.90" data-img="https://images.unsplash.com/photo-1533134242443-d4fd215305ad">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            
+            <div class="produto">
+                <img src="https://images.unsplash.com/photo-1626094309830-abbb0c99da4a" alt="Donut Caramelo">
+                <div class="produto-info">
+                    <h3>Donut Caramelo Salgado</h3>
+                    <p>Delicioso caramelo com uma pitada de sal marinho</p>
+                    <div class="preco">R$ 10,00</div>
+                    <button class="add-to-cart" data-id="4" data-name="Donut Caramelo Salgado" data-price="10.00" data-img="https://images.unsplash.com/photo-1626094309830-abbb0c99da4a">Adicionar ao Carrinho</button>
+                </div>
+            </div>
         </div>
+    </section>
+    
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
-        </div>
-        <img src="images/wave1.png" class="bottom-img">
-  </section>
+        <p>Sweet Dreams - Doces & Donuts</p>
+        <p>Rua dos Sabores, 123 - Cidade Doce - Brasil</p>
+        <p>© 2023 Todos os direitos reservados</p>
+    </footer>
 
-  <section id="sobrenos">
-    <div class="container">
-      <h1 class="title text-center">Diferenciais</h1>
-      <div class="row justify-content-center">
-        <div class="col-md-10">
-          <h4 class="diferenca">Descubra a Diferença no Nosso Atendimento</h4>
-          <p class="diferenca">Na Zenith, acreditamos que cada cliente é único e merece uma experiência personalizada e transformadora. Nosso atendimento vai além do convencional – é um verdadeiro ritual de cuidado e atenção. Desde o momento em que você entra, até o instante em que sai renovado, cada detalhe é pensado para proporcionar um ambiente de pura serenidade e bem-estar.</p>
-          <p class="diferenca">Nossos profissionais altamente qualificados dedicam tempo para entender suas necessidades específicas, oferecendo tratamentos exclusivos que combinam técnicas tradicionais e inovações modernas. Aqui, você não é apenas mais um cliente; você é parte da nossa família, e sua satisfação é nossa prioridade.</p>
-          <p class="diferenca">Venha vivenciar a diferença e permita-se alcançar o seu zenith de beleza e relaxamento. Na Zenith, seu bem-estar está em primeiro lugar.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!--Services Section-->
-
-  <section id="services">
-    <div class="container text-center">
-    <div class="row text-center">
-    <div class="col-md-4 services" >
-    <img src="images/service1.png" class="services-img"> 
-    <h4>Exemplo de excelência</h4>  
-    <p>Relaxe, rejuvenesça e renove-se com nossos tratamentos de massoterapia.</p>   
-    </div>
-    <div class="col-md-4 services" >
-    <img src="images/service3.png" class="services-img"> 
-    <h4>Atendimento rápido</h4>  
-    <p>Nosso atendimento sempre será prioridade de primeiro contato com o cliente.</p>  
-    </div>
-    <div class="col-md-4 services" >
-    <img src="images/service2.png" class="services-img"> 
-    <h4>Contate-nos</h4>  
-    <p>Whatssap</p>  
-    <p>Instagram</p>
-    <p>Telegram</p>
-    <p>Facebook</p>
-    </div>  
-    </div>  
-    <button type="button" class="btn btn-primary">Serviços</button>
-    </div>
-  </section>
- 
-<!--Testemunhos-->
-
-<section id="testemunhos">
-  <div class="container">
-  <h1 class="title text-center">Comentários de clientes</h1>
-  <div class="row offset-1">
-  <div class="col-md-5 testemunhos">
-    <p>"Encontrei na Zenith um verdadeiro santuário de beleza e relaxamento. Os tratamentos são personalizados e feitos com tanto cuidado que sempre saio daqui me sentindo renovada e confiante. É o meu lugar favorito para cuidar de mim mesma."</p>
-    <img src="images/user1.jpg">
-    <p class="usuario"><strong>Roberta</strong><br>Advogada</p>
-  </div>
-  <div class="col-md-5 testemunhos">
-    <p>"Como coordenador, meu dia a dia é extremamente estressante, mas desde a minha primeira visita a Zenith, fiquei impressionado com o nível de atenção e personalização do atendimento. Cada sessão de massoterapia me deixa revigorado e pronto para enfrentar os desafios do trabalho. Recomendo a todos que buscam uma experiência de bem-estar incomparável."</p>
-    <img src="images/user2.jpg">
-    <p class="usuario"><strong>Pedro</strong><br>Coordenador de T.I</p>
-  </div>
-</div>
-</div>
-</section>
-
-<!--Social Media-->
-
-<section id="social-media">
-  <div class="container text-center">
-    <p>Encontre-nos nas redes sociais</p>
-  </div>
-  <div class="social-icons d-flex justify-content-center">
-    <a href="#"><img src="images/facebook-icon.png"></a>
-    <a href="#"><img src="images/instagram-icon.png"></a>
-    <a href="#"><img src="images/twitter-icon.png"></a>
-    <a href="#"><img src="images/whatsapp-icon.png"></a>
-  </div>
-</section>
-
-
-<!--footer-->
-
-<section id="footer">
-  <img src="images/wave2.png" class="footer-img">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 footer-box">
-        <img src="images/massoterapia1.png" class="logo">
-        <p> "Zenith" pode simbolizar a excelência, o auge do bem-estar e o ponto máximo de relaxamento e beleza que seus clientes podem alcançar. É uma forma poética de sugerir que seus serviços levam os clientes ao ponto mais alto de cuidado pessoal e satisfação.</p>
-      </div>
-      <div class="col-md-4 footer-box">
-        <p><strong>Contate-nos</strong></p>
-        <p><i class="fa fa-map" aria-hidden="true"></i>Curitiba - Paraná - Brasil</p>
-        <p><i class="fa fa-phone" aria-hidden="true"></i>+55 (41) 1234-5678 </p>
-        <p><i class="fa fa-envelope-o" aria-hidden="true"></i>zenith@gmail.com</p>
-      </div>
-      <div class="col-md-4 footer-box">
-        <p><strong>Se increva</strong></p>
-        <input type="email" class="form-control" placeholder="Seu e-mail">
-        <button type="button" class="btn btn-primary">Inscrever</button>
-      </div>
-    </div>
-    <hr>
-    <p class="copyright">Criado por JV</p>
-  </div>
-</section>
-
-<!--Scroll-->
-
-<script src="smooth-scroll.js"></script>
-<script>
-	var scroll = new SmoothScroll('a[href*="#"]');
-</script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variáveis do carrinho
+            let cart = [];
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartSidebar = document.querySelector('.cart-sidebar');
+            const closeCartBtn = document.querySelector('.close-cart');
+            const overlay = document.querySelector('.overlay');
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const cartCount = document.querySelector('.cart-count');
+            const totalAmount = document.querySelector('.total-amount');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const notification = document.querySelector('.notification');
+            const clearCartBtn = document.querySelector('.clear-cart');
+            const whatsappCheckout = document.getElementById('whatsapp-checkout');
+            
+            // Abrir/fechar carrinho
+            cartIcon.addEventListener('click', () => {
+                cartSidebar.classList.add('open');
+                overlay.classList.add('active');
+            });
+            
+            closeCartBtn.addEventListener('click', () => {
+                cartSidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+            
+            overlay.addEventListener('click', () => {
+                cartSidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+            
+            // Adicionar item ao carrinho
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    const name = button.getAttribute('data-name');
+                    const price = parseFloat(button.getAttribute('data-price'));
+                    const img = button.getAttribute('data-img');
+                    
+                    // Verificar se o item já está no carrinho
+                    const existingItem = cart.find(item => item.id === id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id,
+                            name,
+                            price,
+                            img,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    showNotification();
+                });
+            });
+            
+            // Mostrar notificação
+            function showNotification() {
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Atualizar carrinho
+            function updateCart() {
+                // Atualizar contador
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                
+                // Atualizar itens
+                cartItemsContainer.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio</p>';
+                    totalAmount.textContent = '0.00';
+                    return;
+                }
+                
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.classList.add('cart-item');
+                    cartItemElement.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4 class="cart-item-title">${item.name}</h4>
+                            <div class="cart-item-price">R$ ${item.price.toFixed(2)} x ${item.quantity} = R$ ${itemTotal.toFixed(2)}</div>
+                            <button class="cart-item-remove" data-id="${item.id}">Remover</button>
+                        </div>
+                    `;
+                    
+                    cartItemsContainer.appendChild(cartItemElement);
+                });
+                
+                // Atualizar total
+                totalAmount.textContent = total.toFixed(2);
+                
+                // Adicionar eventos de remoção
+                document.querySelectorAll('.cart-item-remove').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const id = button.getAttribute('data-id');
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    });
+                });
+            }
+            
+            // Limpar carrinho
+            clearCartBtn.addEventListener('click', () => {
+                cart = [];
+                updateCart();
+            });
+            
+            // Finalizar via WhatsApp
+            whatsappCheckout.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    alert('Seu carrinho está vazio!');
+                    return;
+                }
+                
+                const phoneNumber = "5519981787354"; 
+                let message = "Olá! Gostaria de fazer um pedido:\n\n";
+                
+                cart.forEach(item => {
+                    message += `${item.name} - ${item.quantity} x R$ ${item.price.toFixed(2)} = R$ ${(item.price * item.quantity).toFixed(2)}\n`;
+                });
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                message += `\nTotal: R$ ${total.toFixed(2)}`;
+                message += "\n\nMeu endereço de entrega é: [INSIRA SEU ENDEREÇO AQUI]";
+                
+                const encodedMessage = encodeURIComponent(message);
+                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+            });
+            
+            // Inicializar carrinho vazio
+            updateCart();
+        });
+    </script>
 </body>
 </html>
